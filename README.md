@@ -87,7 +87,11 @@ All of the analysis was done on MySQL and the visualization was done on Tableau.
 * The hours with the most steps were 18 and 19.
 ![Dashboard_5](https://github.com/user-attachments/assets/551b1945-880c-4bf2-bce0-cc6ffa9a50eb)
 
+---
 
+# Act
 
-
-
+* **Promote activity** on days when it is lower. On Sunday, for example, there could be step challenges or app notifications.
+* **Challenge staying in bed**, like on Sundays, by sending engaging app notifications.
+* **Promote better sleep habits** with a campaign that shows that better sleep is linked to lower sedentarism.
+* **Target marketing on peak activity hours**, like app notifications at 18-19h to sustain higher activity levels.
