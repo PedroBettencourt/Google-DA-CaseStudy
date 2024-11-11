@@ -62,6 +62,7 @@ All of the analysis was done on MySQL and the visualization was done on Tableau.
 * The data is imbalanced, with Wednesdays and Fridays having 184 entries, while Tuesdays have only 160.
 * The day of the week when people burned the most calories, took the most steps, and had the longest activity was Saturday.
 * On the other hand, on Sunday there is the least activity and less steps.
+* See Appendix A for SQL query used
 
 ![Dashboard_1](https://github.com/user-attachments/assets/af700465-a6dc-4105-bfdf-cf7bdc44b57b)
 ![Dashboard_2](https://github.com/user-attachments/assets/f9e96c09-6803-470f-8eea-83d41c443115)
@@ -78,6 +79,7 @@ All of the analysis was done on MySQL and the visualization was done on Tableau.
 
 * Comparing time slept with sedentary time, there is a correlation where the more time people slept, the less time people spent being sedentary.
 * For activity, however, there was no correlation with time slept.
+* See Appendix B for SQL query used
 
 ![Dashboard_4](https://github.com/user-attachments/assets/e952e5a1-652a-4b6d-971a-c18fbe46c7e2)
 
@@ -85,6 +87,7 @@ All of the analysis was done on MySQL and the visualization was done on Tableau.
 
 * The data for the steps by hour comes from 35 distinct users.
 * The hours with the most steps were 18 and 19.
+* 
 ![Dashboard_5](https://github.com/user-attachments/assets/551b1945-880c-4bf2-bce0-cc6ffa9a50eb)
 
 ---
@@ -95,3 +98,56 @@ All of the analysis was done on MySQL and the visualization was done on Tableau.
 * **Challenge staying in bed**, like on Sundays, by sending engaging app notifications.
 * **Promote better sleep habits** with a campaign that shows that better sleep is linked to lower sedentarism.
 * **Target marketing on peak activity hours**, like app notifications at 18-19h to sustain higher activity levels.
+
+---
+
+# Appendix
+
+### Apendix A
+
+Query to see average activity according to the day of the week
+
+```
+SELECT 
+    CASE WEEKDAY(ActivityDate)
+        WHEN 0 THEN "Monday"
+        WHEN 1 THEN "Tuesday"
+        WHEN 2 THEN "Wednesday"
+        WHEN 3 THEN "Thursday"
+        WHEN 4 THEN "Friday"
+        WHEN 5 THEN "Saturday"
+        WHEN 6 THEN "Sunday"
+    END AS weekday,
+    AVG(TotalSteps) AS average_steps, 
+    AVG(VeryActiveMinutes) AS average_very_active_min, 
+    AVG(FairlyActiveMinutes) AS average_fairly_active_min, 
+    AVG(LightlyActiveMinutes) AS average_lightly_active_min, 
+    AVG(SedentaryMinutes) AS average_sedentary_min, 
+    AVG(Calories) AS average_calories
+FROM dailyactivity
+GROUP BY weekday
+ORDER BY 
+    CASE weekday
+        WHEN 'Monday' THEN 0
+        WHEN 'Tuesday' THEN 1
+        WHEN 'Wednesday' THEN 2
+        WHEN 'Thursday' THEN 3
+        WHEN 'Friday' THEN 4
+        WHEN 'Saturday' THEN 5
+        WHEN 'Sunday' THEN 6
+    END;
+```
+
+### Apendix B
+
+Query to see activity and sleep
+
+```
+SELECT d.Id, ActivityDate as date, TotalSteps, 
+	VeryActiveMinutes, FairlyActiveMinutes, LightlyActiveMinutes, 
+	SedentaryMinutes, Calories, 
+	TotalMinutesAsleep, TotalTimeInBed
+FROM dailyactivity d
+JOIN sleep s
+ON d.Id = s.Id AND d.ActivityDate = s.SleepDay;
+```
