@@ -23,6 +23,7 @@ Urška Sršen, Bellabeat’s cofounder and Chief Creative Officer, sees potentia
 * Uncover consumer behavior and usage patterns.
 * Use insights to inform and enhance marketing strategies for Bellabeat.
 
+---
 
 # Dataset
 
@@ -34,28 +35,59 @@ Urška Sršen, Bellabeat’s cofounder and Chief Creative Officer, sees potentia
 ### Dataset limitations
 
 * The dataset only has 30 users.
-* When checking for unique IDs, the daily activity data has 35 distinct users. This data is also not balanced as there are more entries on certain days of the week (184 entries on Wednesdays and Fridays, while only 160 on Tuesdays)
-* 
+* When checking for unique IDs most of the sheets do not have 30 distinct users, having more or less.
+* There is more data for the 2nd month, as some tracking statistics are missing from the 1st month.
+* The dataset is also not balanced as there are more entries on certain days of the week.
+ 
+---
 
 # Data preparation
 
-* The dataset for daily activity was seperated in 2 months so it was merged.
+All data preparation was done on MySQL
+
+* The dataset is seperated in 2 months, making it necessary to merge the spreadsheets.
 * The dates were converted to the correct date format.
 * Entries with 0 total steps were removed, as this indicates that the tracking device was not used.
 * Entries that had the same ID and date were removed, since they were duplicates, but had different values for the other fields, which is impossible.
-* 
+  
+---
 
 # Analysis
 
+All of the analysis was done on MySQL and the visualization was done on Tableau.
+
+## Daily Activity
+
+* For the daily activity, there are 35 distinct users.
+* The data is imbalanced, with Wednesdays and Fridays having 184 entries, while Tuesdays have only 160.
 * The day of the week when people burned the most calories, took the most steps, and had the longest activity was Saturday.
 * On the other hand, on Sunday there is the least activity and less steps.
 
 ![Dashboard_1](https://github.com/user-attachments/assets/af700465-a6dc-4105-bfdf-cf7bdc44b57b)
 ![Dashboard_2](https://github.com/user-attachments/assets/f9e96c09-6803-470f-8eea-83d41c443115)
 
-* In terms of sleep, there's only data from April 12 to May 12. In total there are 413 entries from 24 distinct users.
+## Sleep
+
+* In terms of sleep, there's only data from April 12 to May 12. In total there are 413 entries from only 24 distinct users.
 * The data is imbalanced, as there are more entries on some days (66 entries on Wednesdays, while only 47 entries on Mondays).
 * Sunday was the day when people slept and stayed in bed the longest.
 
 ![Dashboard_3](https://github.com/user-attachments/assets/a88cc059-09a0-4789-8c77-c03c12430d02)
+
+## Sleep and Daily Activity
+
+* Comparing time slept with sedentary time, there is a correlation where the more time people slept, the less time people spent being sedentary.
+* For activity, however, there was no correlation with time slept.
+
+![Dashboard_4](https://github.com/user-attachments/assets/e952e5a1-652a-4b6d-971a-c18fbe46c7e2)
+
+## Steps by Hour
+
+* The data for the steps by hour comes from 35 distinct users.
+* The hours with the most steps were 18 and 19.
+![Dashboard_5](https://github.com/user-attachments/assets/551b1945-880c-4bf2-bce0-cc6ffa9a50eb)
+
+
+
+
 
