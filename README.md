@@ -54,7 +54,7 @@ All data preparation was done on MySQL
 
 # Analysis
 
-All of the analysis was done on MySQL and the visualization was done on Tableau.
+All of the analysis was done on MySQL and the visualizations were done on Tableau.
 
 ## Daily Activity
 
@@ -87,7 +87,7 @@ All of the analysis was done on MySQL and the visualization was done on Tableau.
 
 * The data for the steps by hour comes from 35 distinct users.
 * The hours with the most steps were 18 and 19.
-* 
+  
 ![Dashboard_5](https://github.com/user-attachments/assets/551b1945-880c-4bf2-bce0-cc6ffa9a50eb)
 
 ---
